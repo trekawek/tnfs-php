@@ -1169,7 +1169,7 @@ class TNFS{
             $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
             $result = socket_connect($this->socket, $this->SERVER_IP, $this->SERVER_PORT);
             if ($result === FALSE) {
-                closeSocket();
+                $this->closeSocket();
                 $this->socket = FALSE;
             }
         } else {
