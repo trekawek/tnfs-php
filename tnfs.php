@@ -36,7 +36,7 @@ class TNFS{
     private static $CMD_RENAME   = 0x28;
     
     // MAX BLOCK SIZE WHEN READING A FILE
-    private static $READ_BLOCK_SIZE = 256;   // max bytes = 256 to read by read function
+    private static $READ_BLOCK_SIZE = 16384;   // max bytes to read by readFile() function
 
     // OPERATION NAMES
     private static $COMMANDS = array(
@@ -736,7 +736,7 @@ class TNFS{
         $msg .= pack('CV', $handle, $length);
 
         $this->send($msg);        
-        $ret = $this->receive(512);
+        $ret = $this->receive($length + 16);
 
 
         $response = $this->parseResponse($this->BUFFER,'vLength/a*Content/');
