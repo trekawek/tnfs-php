@@ -1171,6 +1171,7 @@ class TNFS{
             if ($result === FALSE) {
                 $this->closeSocket();
                 $this->socket = FALSE;
+                return null;
             }
         } else {
             $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
