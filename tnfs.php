@@ -1201,7 +1201,7 @@ class TNFS{
     }
 
     private function closeSocket(){
-        if($this->socket != null){
+        if($this->socket !== null && $this->socket !== false) {
             socket_shutdown($this->socket, 2);
             socket_close($this->socket);
         }
